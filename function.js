@@ -2,28 +2,27 @@
 //1. Write function to check if number is even, fn(2) -> true, fn(3) -> false
 
 function checkEvenNumber(num) {
-  if (num === 0) console.log("Số không chẵn không lẻ");
-  else if (num % 2 === 0) console.log("Số chẵn");
-  else if (num % 2 === 1) console.log("Số lẻ");
-  else console.log("Không phải là số");
+  if (num === 0 || typeof num === "number") return false;
+  else if (num % 2 === 0) return true;
+  else return false;
 }
 
 // Test case:
-checkEvenNumber(21);
-checkEvenNumber(18);
-checkEvenNumber(0);
-checkEvenNumber("evondev");
+console.log(checkEvenNumber(21));
+console.log(checkEvenNumber(18));
+console.log(checkEvenNumber(0));
+console.log(checkEvenNumber("evondev"));
 
 // Exercise 2
 // 2. Write function to convert string to prefix string, example: fn('i love to learn javascript', '_') -> i_love_to_learn_javascript
 
-function convertToPrefix(str) {
-  const prefixStr = str.split(" ").join("_");
+function convertToPrefix(str, prefix) {
+  const prefixStr = str.split(" ").join(prefix);
   return prefixStr;
 }
 
 // Test case:
-console.log(convertToPrefix("I love coding"));
+console.log(convertToPrefix("I love coding", "_"));
 
 // Exercise 3
 // 3. Write function to calculate age, example: fn(1994) -> 29
@@ -42,7 +41,7 @@ console.log(calculateAge(2023, 2000));
 
 const middleName = "Thanh";
 function showName(firstName, lastName) {
-  var nameIntro = "Your name is ";
+  const nameIntro = "Your name is ";
 
   function makeFullName() {
     return nameIntro + firstName + " " + middleName + " " + lastName;
@@ -58,6 +57,9 @@ console.log(showName("Trần", "Lâm"));
 // 5. Write function sum of three numbers, fn(a,b,c)
 
 function sumNumbers(a, b, c) {
+  if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number") {
+    return null;
+  }
   return a + b + c;
 }
 
@@ -68,7 +70,7 @@ console.log(sumNumbers(100, -5, 2));
 // 6. Write function to get random number from 0 to 1000, example: fn() -> 321
 
 function randomNumber() {
-  return Math.floor(Math.random() * 1000) + 1;
+  return Math.floor(Math.random() * 1000);
 }
 
 // Test case
@@ -89,13 +91,13 @@ console.log(truncateString("12345678", 2, "..."));
 // 8. Write function return typeof value, fn('evondev') -> string
 
 function checkType(value) {
-  console.log(typeof value);
+  return typeof value;
 }
 
 // Test case
-checkType("Lam dep trai");
-checkType(1);
-checkType(null);
+console.log(checkType("Lam dep trai"));
+console.log(checkType(1));
+console.log(checkType(null));
 
 // Exercise 9
 // 9. Write function to check if str includes word, fn("evondev", vonz) -> false
